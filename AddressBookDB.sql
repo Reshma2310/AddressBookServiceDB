@@ -18,3 +18,6 @@ UPDATE Address_Book SET Address='65-A/5',PhoneNumber=9085632147 where FirstName=
 
 UC5: Delete a Person using Person Name
 DELETE FROM Address_Book WHERE FirstName= 'Vahidha';
+
+UC6: Get details using city or state name
+SELECT * FROM Address_Book WHERE City='Hyd' OR State='AndhraPradesh';
