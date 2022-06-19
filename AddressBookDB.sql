@@ -11,3 +11,7 @@ INSERT INTO Address_Book( FirstName, LastName, Address, City, State, ZipCode, Ph
 ( 'Reshma', 'Rose', '49/A-62', 'Kurnool', 'AndhraPradesh', 234234, 2342342342, 'reshma@gmail.com' ),
 ( 'Vahidha', 'D', '4/6A-23', 'Vizak', 'AndhraPradesh', 134234, 6242342342, 'vahidha@yahoo.com' ),
 ( 'Basith', 'R', '49-A/28', 'Hyd', 'Telangana', 567234, 4567842342, 'basith@gmail.com' );
+SELECT * FROM Address_Book;
+
+UC4: Edit Existing person details using their name
+UPDATE Address_Book SET Address='65-A/5',PhoneNumber=9085632147 where FirstName='Vahidha';
