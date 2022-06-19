@@ -15,3 +15,6 @@ SELECT * FROM Address_Book;
 
 UC4: Edit Existing person details using their name
 UPDATE Address_Book SET Address='65-A/5',PhoneNumber=9085632147 where FirstName='Vahidha';
+
+UC5: Delete a Person using Person Name
+DELETE FROM Address_Book WHERE FirstName= 'Vahidha';
