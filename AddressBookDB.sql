@@ -42,3 +42,9 @@ SELECT ID, Type, FirstName, LastName, Address, City, State, ZipCode, PhoneNumber
 UC10: Count by Type
 SELECT COUNT(*) Family_Count FROM Address_Book WHERE Type='Family'
 SELECT COUNT(*) Friends_Count FROM Address_Book WHERE Type='Friends'
+
+UC11: Add Person to both Friend and Family
+INSERT INTO Address_Book( FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email, Type ) VALUES
+( 'Vali', 'D', '4/A-29', 'Vizak', 'AndhraPradesh', 231234, 2341142342, 'vali@gmail.com', 'Friends' ),
+( 'Khajabi', 'D', '4A/6-3C', 'Kurnool', 'AndhraPradesh', 134254, 5242342342, 'khajabi@yahoo.com', 'Family' )
+SELECT * FROM Address_Book;
