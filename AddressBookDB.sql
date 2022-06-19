@@ -38,3 +38,7 @@ ALTER TABLE Address_Book ADD Type VARCHAR(150);
 UPDATE Address_Book set Type='Family' where FirstName = 'Reshma' or FirstName = 'Basith';
 UPDATE Address_Book set Type='Friends' where FirstName = 'Vahidha';
 SELECT ID, Type, FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email FROM Address_Book;
+
+UC10: Count by Type
+SELECT COUNT(*) Family_Count FROM Address_Book WHERE Type='Family'
+SELECT COUNT(*) Friends_Count FROM Address_Book WHERE Type='Friends'
