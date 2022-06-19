@@ -25,3 +25,10 @@ SELECT * FROM Address_Book WHERE City='Hyd' OR State='AndhraPradesh';
 UC7: Size of Address book by City or State
 SELECT COUNT(*) FROM Address_Book WHERE City='Kurnool' AND State='AndhraPradesh';
 SELECT COUNT(*) FROM Address_Book WHERE City='Hyd'
+
+INSERT INTO Address_Book( FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email ) VALUES
+( 'Vahidha', 'D', '4/6A-23', 'Vizak', 'AndhraPradesh', 134234, 6242342342, 'vahidha@yahoo.com' );
+
+UC8: Data in Alphabetical order using city
+SELECT FirstName, City FROM Address_Book ORDER BY City ASC;
+SELECT FirstName, City FROM Address_Book ORDER BY City DESC;
