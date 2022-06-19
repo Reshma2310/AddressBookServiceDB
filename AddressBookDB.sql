@@ -21,3 +21,7 @@ DELETE FROM Address_Book WHERE FirstName= 'Vahidha';
 
 UC6: Get details using city or state name
 SELECT * FROM Address_Book WHERE City='Hyd' OR State='AndhraPradesh';
+
+UC7: Size of Address book by City or State
+SELECT COUNT(*) FROM Address_Book WHERE City='Kurnool' AND State='AndhraPradesh';
+SELECT COUNT(*) FROM Address_Book WHERE City='Hyd'
