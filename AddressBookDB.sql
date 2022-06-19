@@ -32,3 +32,9 @@ INSERT INTO Address_Book( FirstName, LastName, Address, City, State, ZipCode, Ph
 UC8: Data in Alphabetical order using city
 SELECT FirstName, City FROM Address_Book ORDER BY City ASC;
 SELECT FirstName, City FROM Address_Book ORDER BY City DESC;
+
+UC9: Add Type to Identify
+ALTER TABLE Address_Book ADD Type VARCHAR(150);
+UPDATE Address_Book set Type='Family' where FirstName = 'Reshma' or FirstName = 'Basith';
+UPDATE Address_Book set Type='Friends' where FirstName = 'Vahidha';
+SELECT ID, Type, FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email FROM Address_Book;
