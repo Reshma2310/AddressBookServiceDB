@@ -48,3 +48,62 @@ INSERT INTO Address_Book( FirstName, LastName, Address, City, State, ZipCode, Ph
 ( 'Vali', 'D', '4/A-29', 'Vizak', 'AndhraPradesh', 231234, 2341142342, 'vali@gmail.com', 'Friends' ),
 ( 'Khajabi', 'D', '4A/6-3C', 'Kurnool', 'AndhraPradesh', 134254, 5242342342, 'khajabi@yahoo.com', 'Family' )
 SELECT * FROM Address_Book;
+
+UC12: Creating AddressContacts Table
+CREATE TABLE Type_Contacts(
+Type_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+TYPE_Name VARCHAR(25) NOT NULL)
+
+INSERT INTO Type_Contacts VALUES('Family'),('Friends'),('Colleagues')
+SELECT * FROM Type_Contacts
+CREATE TABLE Address_Contacts(
+CONTACT_ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+FirstName VARCHAR(25) NOT NULL,
+LastName VARCHAR(25) NOT NULL,
+Address VARCHAR(100) NOT NULL,
+City VARCHAR(25) NOT NULL,
+State VARCHAR(25) NOT NULL,
+ZipCode FLOAT NOT NULL,
+Email VARCHAR(50) NOT NULL,
+TYPE_ID INT NOT NULL)
+INSERT INTO Address_Contacts VALUES('Rose','T','6/72','Hyd','Telangana',530045,'rose@gmail.com',1)
+INSERT INTO Address_Contacts VALUES('Violet','M','6/89','Vijayawada','AndhraPradesh',521329,'violet@gmail.com',2)
+INSERT INTO Address_Contacts VALUES('Sita','Kalla','9/86','Vizag','Andhra Pradesh',594521,'sita@gmail.com',2)
+INSERT INTO Address_Contacts VALUES('Tarun','Namala','9/76','Sinhanur','Karnataka',665438,'tarun@gmail.com',1)
+INSERT INTO Address_Contacts VALUES('Ramesh','Dundigala','6/89','Chennai','Tamil Nadu',986321,'ramesh@gmail.com',3)
+INSERT INTO Address_Contacts VALUES('Harsha','Sridarvalli','8/54','Ongole','Andhra Pradesh',524321,'harsha@gmail.com',2)
+INSERT INTO Address_Contacts VALUES('Radha','saragadam','6/72','Coimbatore','Tamil Nadu',532187,'radha@gmail.com',1)
+SELECT * FROM Address_Contacts
+
+ ---- Creating PhoneContacts Table
+
+CREATE TABLE Phone_Contacts
+(Contact_ID INT NOT NULL,
+FirstName VARCHAR(25) NOT NULL,
+PhoneNo1 FLOAT NOT NULL,
+PhoneNo2 FLOAT NULL)
+INSERT INTO Phone_Contacts VALUES(1,'Rose',1111261319,7554865303)
+INSERT INTO Phone_Contacts VALUES(2,'Violet',2220123456,7689054321)
+INSERT INTO Phone_Contacts VALUES(4,'Sita',2223217890,8906745123)
+INSERT INTO Phone_Contacts VALUES(5,'Harsha',2227564231,7908645231)
+INSERT INTO Phone_Contacts (Contact_ID,FirstName,PhoneNo1) VALUES(6,'Aarna',2229054123)
+INSERT INTO Phone_Contacts VALUES(7,'Lakshmi',7222654321,2225321405)
+INSERT INTO Phone_Contacts VALUES(8,'Radha',3336672345,4445428901)
+SELECT * FROM Phone_Contacts
+
+ALTER TABLE Address_Contacts ADD CONSTRAINT FK_Type_Contacts FOREIGN KEY(Type_ID) REFERENCES Type_Contacts(Type_ID) ON DELETE CASCADE ON UPDATE CASCADE
+ALTER TABLE Phone_Contacts ADD CONSTRAINT FK_Phone_Contacts FOREIGN KEY(Person_ID) REFERENCES Address_Contacts(CONTACT_ID) ON DELETE CASCADE ON UPDATE CASCADE
+ALTER TABLE Phone_Contacts ADD Person_ID INT
+
+UC13: 
+
+SELECT * FROM Address_Contacts WHERE City = 'Vizag'
+SELECT * FROM Address_Contacts WHERE STATE = 'Andhra Pradesh'
+
+SELECT CITY, COUNT(CITY) AS Address_Contacts FROM ADDRESS_BOOK GROUP BY City
+SELECT STATE, COUNT(STATE) AS Address_Contacts FROM ADDRESS_BOOK GROUP BY State
+
+SELECT * FROM Address_Contacts WHERE City = 'Hyd' ORDER BY FirstName
+
+SELECT TYPE_Name,COUNT(TYPE_Name) FROM Type_Contacts CT INNER JOIN Address_Contacts CA ON CT.Type_ID = CA.Type_ID GROUP BY TYPE_Name
+SELECT TYPE_Name,CA.FirstName,PhoneNo1 FROM Type_Contacts CT INNER JOIN Address_Contacts CA ON CT.Type_ID = CA.Type_ID INNER JOIN Phone_Contacts CP ON CA.CONTACT_ID = CP.CONTACT_ID
